@@ -1,0 +1,43 @@
+$ cloudflared tunnel login
+_______________________________
+
+$ cloudflared tunnel create name-tunnel
+_______________________________
+
+D:\cloudflare> cloudflared tunnel create name-tunnel
+Tunnel credentials written to C:\Users\muham\.cloudflared\2bb08f8a-4199-4c00-8020-1a772fa98c3a.json. cloudflared chose this file based on where your origin certificate was found. Keep this file secret. To revoke these credentials, delete the tunnel.
+
+Created tunnel windows-tunnel with id 2bb08f8a-4199-4c00-8020-1a772fa98c3a
+________________________________
+
+create file name config.xml
+
+C:\Users\<YourName>\.cloudflared\config.yml
+________________________________
+
+tunnel: <Tunnel-ID-هنا>
+credentials-file: C:\Users\<YourName>\.cloudflared\<Tunnel-ID>.json
+
+ingress:
+  - hostname: windows.dg0x6.online
+    service: http://localhost:8080
+  - service: http_status:404
+_________________________________
+
+$ cloudflared tunnel route dns windows-tunnel windows.dg0x6.online
+_________________________________
+
+start tunnel
+
+$ cloudflared tunnel run windows-tunnel
+_________________________________
+
+https://windows.dg0x6.online
+_________________________________
+
+start python3 server
+
+python3 -m http.server 8080
+_________________________________
+
+

@@ -1,0 +1,39 @@
+wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+sudo dpkg -i cloudflared-linux-amd64.deb
+
+______________________________________________
+
+cloudflared tunnel login
+______________________________________________
+
+cloudflared tunnel create ubuntu-vps
+______________________________________________
+
+sudo nano /etc/cloudflared/config.yml
+______________________________________________
+
+tunnel: ubuntu-ssh
+credentials-file: /root/.cloudflared/xxxx.json
+
+ingress:
+  - hostname: ssh.yourdomain.com
+    service: ssh://localhost:22
+  - service: http_status:404
+______________________________________________
+
+cloudflared tunnel route dns ubuntu-vps ubuntu-vps.dg0x6.online
+______________________________________________
+
+cloudflared tunnel run myvps
+______________________________________________
+
+ssh -o ProxyCommand="cloudflared access ssh --hostname %h" user@ubuntu-vps.dg0x6.online
+______________________________________________
+
+sudo systemctl enable cloudflared
+sudo systemctl start cloudflared
+sudo systemctl status cloudflared
+______________________________________________
+
+
+

@@ -1,0 +1,25 @@
+___________________________
+
+# cloudflared tunnel login
+___________________________
+
+# cloudflared tunnel create DEVICE-TUNNEL
+___________________________
+
+nano ~/.cloudflared/config.yml
+___________________________
+
+tunnel: <Tunnel-ID-هنا>
+credentials-file: <path/to/credentials.json>
+
+ingress:
+  - hostname: <subdomain.dg0x6.online>
+    service: http://localhost:<PORT>
+  - service: http_status:404
+___________________________
+
+# cloudflared tunnel route dns DEVICE-TUNNEL <subdomain.dg0x6.online>
+___________________________
+start tunnel
+# cloudflared tunnel run DEVICE-TUNNEL
+___________________________
