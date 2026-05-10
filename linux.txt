@@ -9,7 +9,7 @@ ___________________________
 nano ~/.cloudflared/config.yml
 ___________________________
 
-tunnel: <Tunnel-ID-هنا>
+tunnel: <Tunnel-ID>
 credentials-file: <path/to/credentials.json>
 
 ingress:
