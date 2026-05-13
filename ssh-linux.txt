@@ -27,6 +27,9 @@ ______________________________________________
 cloudflared tunnel run myvps
 ______________________________________________
 
+sudo cloudflared --config /home/dg0x6/.cloudflared/config.yml service install
+______________________________________________
+
 ssh -o ProxyCommand="cloudflared access ssh --hostname %h" user@ubuntu-vps.dg0x6.online
 ______________________________________________
 
